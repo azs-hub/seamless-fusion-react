@@ -1,5 +1,6 @@
 "use client";
 
+import { ServicesSection } from "@/components/sections/ServicesSection";
 import { sections } from "@/lib/data";
 import type { SectionId } from "@/lib/data";
 import styles from "./SectionView.module.css";
@@ -8,6 +9,14 @@ interface SectionViewProps {
   id: SectionId;
   open: boolean;
   onClose: () => void;
+}
+
+function SectionBody({ id, active }: { id: SectionId; active: boolean }) {
+  if (id === "services") {
+    return <ServicesSection active={active} />;
+  }
+
+  return null;
 }
 
 export function SectionView({ id, open, onClose }: SectionViewProps) {
@@ -24,6 +33,8 @@ export function SectionView({ id, open, onClose }: SectionViewProps) {
             <p className={styles.lede}>{section.lede}</p>
           </div>
         </div>
+
+        <SectionBody id={id} active={open} />
 
         <div className={styles.closeNote}>
           <button type="button" className={styles.closeBtn} onClick={onClose}>

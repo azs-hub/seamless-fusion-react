@@ -1,0 +1,16 @@
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.revealActive {
+  animation: up 0.7s var(--ease) both;
+  animation-delay: var(--rd, 0s);
+}
+
+@keyframes up {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
