@@ -1,0 +1,169 @@
+.line {
+  display: inline-block;
+  white-space: nowrap;
+  font-family: var(--sans);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.035em;
+  line-height: 0.82;
+}
+
+.letter {
+  display: inline-block;
+  position: relative;
+  transition: color 0.3s ease;
+  will-change: transform;
+}
+
+.glyph {
+  display: inline-block;
+}
+
+.glyphIntro {
+  opacity: 0;
+  animation: letterIn 1.25s var(--ease) both;
+  animation-delay: var(--d);
+}
+
+@keyframes letterIn {
+  from {
+    opacity: 0;
+    transform: translateX(0.55em);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.letterLive {
+  cursor: pointer;
+}
+
+.letterLive::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -0.105em;
+  width: 0.055em;
+  height: 0.055em;
+  min-width: 4px;
+  min-height: 4px;
+  border-radius: 50%;
+  background: var(--ink);
+  transform: translate(-50%, 8px) scale(0);
+  opacity: 0;
+  transition:
+    transform 0.5s var(--ease),
+    opacity 0.4s ease;
+}
+
+.letterReady.letterLive::after {
+  transform: translate(-50%, 0) scale(1);
+  opacity: 1;
+}
+
+.letterReady.letterLive:hover::after {
+  opacity: 0;
+}
+
+.letterReady.letterLive:hover > .glyph {
+  animation: bounce 0.85s var(--ease);
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+
+  28% {
+    transform: translateY(-22%);
+  }
+
+  48% {
+    transform: translateY(0);
+  }
+
+  66% {
+    transform: translateY(-9%);
+  }
+
+  82% {
+    transform: translateY(0);
+  }
+
+  91% {
+    transform: translateY(-3%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.letterReady:not(.letterLive) > .glyph {
+  color: var(--muted);
+}
+
+.tip {
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  margin-bottom: 0.16em;
+  transform: translate(-50%, 6px);
+  transform-origin: bottom center;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.32s var(--ease),
+    transform 0.32s var(--ease);
+  white-space: nowrap;
+  z-index: 5;
+}
+
+.letterReady.letterLive:hover .tip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.tipInner {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(15px, 1.5vw, 22px);
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.tipNum {
+  font-family: var(--sans);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.55em;
+  letter-spacing: 0.08em;
+  color: var(--grey);
+}
+
+.tipStem {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 0.42em;
+  background: var(--ink);
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glyphIntro {
+    animation: none;
+    opacity: 1;
+  }
+}

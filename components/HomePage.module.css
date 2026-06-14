@@ -3,3 +3,53 @@
   height: 100vh;
   width: 100vw;
 }
+
+.meta {
+  position: fixed;
+  z-index: 40;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--grey);
+  opacity: 0;
+  transition: opacity 0.8s ease 0.2s;
+}
+
+.metaVisible {
+  opacity: 1;
+}
+
+.metaLeft {
+  left: clamp(20px, 4vw, 46px);
+  bottom: clamp(20px, 4vh, 34px);
+}
+
+.metaRight {
+  right: clamp(20px, 4vw, 46px);
+  bottom: clamp(20px, 4vh, 34px);
+  text-align: right;
+}
+
+.hint {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: clamp(20px, 4vh, 40px);
+  text-align: center;
+  z-index: 40;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 15px;
+  color: var(--grey);
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.hintVisible {
+  opacity: 1;
+}
+
+.hintHidden {
+  opacity: 0;
+}
