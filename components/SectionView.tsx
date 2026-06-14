@@ -2,10 +2,14 @@
 
 import { AboutSection } from "@/components/sections/AboutSection";
 import { ExperiencesSection } from "@/components/sections/ExperiencesSection";
+import { FolioSection } from "@/components/sections/FolioSection";
 import { IndexSection } from "@/components/sections/IndexSection";
 import { LabSection } from "@/components/sections/LabSection";
 import { MoreSection } from "@/components/sections/MoreSection";
+import { NowSection } from "@/components/sections/NowSection";
+import { OriginSection } from "@/components/sections/OriginSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
+import { UsesSection } from "@/components/sections/UsesSection";
 import { sections } from "@/lib/data";
 import type { SectionId } from "@/lib/data";
 import styles from "./SectionView.module.css";
@@ -48,6 +52,22 @@ function SectionBody({
 
   if (id === "index") {
     return <IndexSection active={active} onOpenSection={onOpenSection} />;
+  }
+
+  if (id === "folio") {
+    return <FolioSection active={active} />;
+  }
+
+  if (id === "uses") {
+    return <UsesSection active={active} />;
+  }
+
+  if (id === "origin") {
+    return <OriginSection active={active} />;
+  }
+
+  if (id === "now") {
+    return <NowSection active={active} />;
   }
 
   return null;

@@ -50,3 +50,9 @@
 .cta:hover .arrow {
   transform: translateX(8px);
 }
+
+.note {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--grey);
+}
