@@ -63,18 +63,19 @@ body::before {
   margin: -30vmax 0 0 -30vmax;
   border-radius: 50%;
   pointer-events: none;
-  background: radial-gradient(closest-side,
-      rgba(13, 13, 12, 0.14) 0%,
-      rgba(13, 13, 12, 0.085) 32%,
-      rgba(13, 13, 12, 0.035) 56%,
-      rgba(13, 13, 12, 0) 78%);
+  background: radial-gradient(
+    closest-side,
+    rgba(13, 13, 12, 0.14) 0%,
+    rgba(13, 13, 12, 0.085) 32%,
+    rgba(13, 13, 12, 0.035) 56%,
+    rgba(13, 13, 12, 0) 78%
+  );
   transform: translate3d(var(--x, 60vw), var(--y, 60vh), 0);
   mix-blend-mode: multiply;
   will-change: transform;
 }
 
-@media (hover: none),
-(prefers-reduced-motion: reduce) {
+@media (hover: none), (prefers-reduced-motion: reduce) {
   body::before {
     display: none;
   }
