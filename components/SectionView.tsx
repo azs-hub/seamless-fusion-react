@@ -1,5 +1,6 @@
 "use client";
 
+import { ExperiencesSection } from "@/components/sections/ExperiencesSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { sections } from "@/lib/data";
 import type { SectionId } from "@/lib/data";
@@ -14,6 +15,10 @@ interface SectionViewProps {
 function SectionBody({ id, active }: { id: SectionId; active: boolean }) {
   if (id === "services") {
     return <ServicesSection active={active} />;
+  }
+
+  if (id === "experiences") {
+    return <ExperiencesSection active={active} />;
   }
 
   return null;
