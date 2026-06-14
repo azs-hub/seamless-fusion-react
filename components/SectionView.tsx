@@ -1,6 +1,10 @@
 "use client";
 
+import { AboutSection } from "@/components/sections/AboutSection";
 import { ExperiencesSection } from "@/components/sections/ExperiencesSection";
+import { IndexSection } from "@/components/sections/IndexSection";
+import { LabSection } from "@/components/sections/LabSection";
+import { MoreSection } from "@/components/sections/MoreSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { sections } from "@/lib/data";
 import type { SectionId } from "@/lib/data";
@@ -10,9 +14,18 @@ interface SectionViewProps {
   id: SectionId;
   open: boolean;
   onClose: () => void;
+  onOpenSection: (id: SectionId) => void;
 }
 
-function SectionBody({ id, active }: { id: SectionId; active: boolean }) {
+function SectionBody({
+  id,
+  active,
+  onOpenSection,
+}: {
+  id: SectionId;
+  active: boolean;
+  onOpenSection: (id: SectionId) => void;
+}) {
   if (id === "services") {
     return <ServicesSection active={active} />;
   }
@@ -21,10 +34,31 @@ function SectionBody({ id, active }: { id: SectionId; active: boolean }) {
     return <ExperiencesSection active={active} />;
   }
 
+  if (id === "about") {
+    return <AboutSection active={active} />;
+  }
+
+  if (id === "more") {
+    return <MoreSection active={active} />;
+  }
+
+  if (id === "lab") {
+    return <LabSection active={active} />;
+  }
+
+  if (id === "index") {
+    return <IndexSection active={active} onOpenSection={onOpenSection} />;
+  }
+
   return null;
 }
 
-export function SectionView({ id, open, onClose }: SectionViewProps) {
+export function SectionView({
+  id,
+  open,
+  onClose,
+  onOpenSection,
+}: SectionViewProps) {
   const section = sections[id];
 
   return (
@@ -39,7 +73,7 @@ export function SectionView({ id, open, onClose }: SectionViewProps) {
           </div>
         </div>
 
-        <SectionBody id={id} active={open} />
+        <SectionBody id={id} active={open} onOpenSection={onOpenSection} />
 
         <div className={styles.closeNote}>
           <button type="button" className={styles.closeBtn} onClick={onClose}>

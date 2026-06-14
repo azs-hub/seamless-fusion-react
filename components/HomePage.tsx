@@ -73,6 +73,7 @@ export function HomePage() {
           id={displayed}
           open={open}
           onClose={closeSection}
+          onOpenSection={openSection}
         />
       )}
     </div>

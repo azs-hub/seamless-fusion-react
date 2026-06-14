@@ -7,6 +7,9 @@ interface RevealProps {
   className?: string;
   as?: ElementType;
   active?: boolean;
+  href?: string;
+  target?: string;
+  rel?: string;
 }
 
 export function Reveal({
@@ -15,6 +18,9 @@ export function Reveal({
   className = "",
   as: Tag = "div",
   active = false,
+  href,
+  target,
+  rel,
 }: RevealProps) {
   const style = { "--rd": `${delay}s` } as CSSProperties;
 
@@ -22,6 +28,9 @@ export function Reveal({
     <Tag
       className={`${styles.reveal}${active ? ` ${styles.revealActive}` : ""}${className ? ` ${className}` : ""}`}
       style={style}
+      href={href}
+      target={target}
+      rel={rel}
     >
       {children}
     </Tag>
