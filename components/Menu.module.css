@@ -2,9 +2,14 @@
   position: fixed;
   inset: 0;
   z-index: 55;
+  background: var(--paper);
+  background-image: radial-gradient(var(--dot) 1.1px, transparent 1.1px);
+  background-size: 24px 24px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
   padding: clamp(70px, 12vh, 130px) clamp(24px, 7vw, 110px) clamp(40px, 8vh, 80px);
   opacity: 0;
   pointer-events: none;
@@ -21,6 +26,8 @@
 .list {
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
+  margin-block: auto;
 }
 
 .row {
